@@ -1,2 +1,2 @@
-# lite-telegram-framework
-Lite Telegram Framework
+# Lite Telegram Framework
+A very lite wrapper around Telegram bot API.
