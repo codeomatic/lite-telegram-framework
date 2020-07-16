@@ -1,4 +1,4 @@
-from pygram import Telegram
+from milligram import Telegram
 
 
 def test_get_me_success(requests_mock):
