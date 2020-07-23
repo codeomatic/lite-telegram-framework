@@ -12,15 +12,10 @@ def read(path):
         return fh.read()
 
 
-def get_version():
-    import milligram
-    return milligram.__version__
-
-
 setup(
     python_requires='>=3.7',
     name='lite-telegram-framework',
-    version=get_version(),
+    version=read('VERSION').strip(),
     description='Lite framework for writing telegram bots',
     url='http://github.com/codeomatic/lite-telegram-framework',
     author='Denis Nikolskiy',
@@ -29,10 +24,12 @@ setup(
     long_description=read('README.md'),
     long_description_content_type='text/markdown',
     install_requires=['requests'],
+    include_package_data=True,
+    zip_safe=False,
     keywords='telegram api telegrambot',
     classifiers=[
         'Intended Audience :: Developers',
-        'Programming Language :: Python :: 3 :: Only'
+        'Programming Language :: Python :: 3 :: Only',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     project_urls={
