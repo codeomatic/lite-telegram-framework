@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build package
-        run: |
+      - run: |
           python3 setup.py sdist bdist_wheel
 
   publsih:
