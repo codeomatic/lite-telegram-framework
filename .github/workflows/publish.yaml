@@ -8,10 +8,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Run build
       - uses: actions/checkout@v2
-      - run: |
+      - name: Build package
+        run: |
           python3 setup.py sdist bdist_wheel
+
+  publsih:
+    needs: build
+    runs-on: ubuntu-latest
+    name: Publish to PyPI
+    steps:
+      - name: Install twine
+        run: pip install twine
+      - name: Deploy to PyPI
+        run: |
+         twine upload -u ${{ secrets.PYPI_USER}} -p ${{ secrets.PYPI_PSWD }} --repository-url ${{ secrets.pypi_url }} dist/*
 
 
 
