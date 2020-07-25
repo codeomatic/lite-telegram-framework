@@ -13,15 +13,4 @@ jobs:
       - run: |
           python3 setup.py sdist bdist_wheel
 
-  publsih:
-    needs: build
-    runs-on: ubuntu-latest
-    name: Publish to PyPI
-    steps:
-      - name: Build
-      - uses: actions/checkout@v2
-      - run: |
-         pip install twine
-         twine upload -u ${{ secrets.PYPI_USER}} -p ${{ secrets.PYPI_PSWD }} --repository-url ${{ secrets.pypi_url }} dist/*
 
-#https://test.pypi.org/legacy/
