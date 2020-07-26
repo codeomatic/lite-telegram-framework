@@ -5,31 +5,17 @@ on:
       - deploy
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Build container
         run: docker build -t ltf .
-
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: Run tests
         run: docker run ltf
-
-  publsih:
-    needs: test
-    runs-on: ubuntu-latest
-    name: Publish to PyPI
-    steps:
       - name: Deploy to PyPI
         env:
           PYPI_USER: "${{ secrets.PYPI_USER }}"
           PYPI_PSWD: "${{ secrets.PYPI_PSWD }}"
           PYPI_URL: "https://test.pypi.org/legacy/"
         run: docker run ltf pypi.sh
-
-
-
