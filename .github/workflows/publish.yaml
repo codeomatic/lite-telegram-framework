@@ -21,12 +21,12 @@ jobs:
       - name: Deploy to PyPI
         if: success()
         env:
-          PYPI_USER: "${{ secrets.PYPI_USER }}"
-          PYPI_PSWD: "${{ secrets.PYPI_PSWD }}"
-          PYPI_URL: "https://test.pypi.org/legacy/"
+          TWINE_USERNAME: "${{ secrets.PYPI_USER }}"
+          TWINE_PASSWORD: "${{ secrets.PYPI_PSWD }}"
+          TWINE_REPOSITORY: "https://test.pypi.org/legacy/"
         run: |
           docker run \
-            -e PYPI_USER \
-            -e PYPI_PSWD \
-            -e PYPI_URL \
+            -e TWINE_USERNAME \
+            -e TWINE_PASSWORD \
+            -e TWINE_REPOSITORY \
             ltf ./pypi.sh

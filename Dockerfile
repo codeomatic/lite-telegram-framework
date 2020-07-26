@@ -1,8 +1,8 @@
 FROM python:3.8-slim
 
-#RUN pip3 install twine
+RUN pip install twine
 COPY requirements.txt /tmp/requirements.txt
-RUN pip3 install -r /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
