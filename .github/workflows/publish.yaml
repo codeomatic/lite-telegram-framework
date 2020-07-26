@@ -23,10 +23,8 @@ jobs:
         env:
           TWINE_USERNAME: "${{ secrets.PYPI_USER }}"
           TWINE_PASSWORD: "${{ secrets.PYPI_PSWD }}"
-          TWINE_REPOSITORY: "https://test.pypi.org/legacy/"
         run: |
           docker run \
             -e TWINE_USERNAME \
             -e TWINE_PASSWORD \
-            -e TWINE_REPOSITORY \
             ltf ./pypi.sh
