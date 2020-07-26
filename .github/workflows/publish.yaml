@@ -29,4 +29,4 @@ jobs:
             -e PYPI_USER \
             -e PYPI_PSWD \
             -e PYPI_URL \
-            ltf sh -c ./pypi.sh
+            ltf ./pypi.sh
