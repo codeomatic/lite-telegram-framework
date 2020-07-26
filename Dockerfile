@@ -11,6 +11,7 @@ WORKDIR $APP_HOME
 COPY ./milligram ./milligram
 COPY ./tests ./tests
 COPY ./pypi.sh ./
+RUN chmod u+x pypi.sh
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
