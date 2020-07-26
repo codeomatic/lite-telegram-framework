@@ -1,0 +1,12 @@
+.git
+.gitignore
+.github
+.pytest_cache
+.idea
+.dockerignore
+Dockerfile
+*.egg-info
+__pycache__
+/dist
+/build
+/tmp

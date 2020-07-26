@@ -1,0 +1,30 @@
+name: Publish to PyPI
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build container
+        if: success()
+        run: docker build -t ltf .
+
+      - name: Run tests
+        if: success()
+        run: docker run ltf
+
+      - name: Deploy to PyPI
+        if: success()
+        env:
+          TWINE_USERNAME: "${{ secrets.PYPI_USER }}"
+          TWINE_PASSWORD: "${{ secrets.PYPI_PSWD }}"
+        run: |
+          docker run \
+            -e TWINE_USERNAME \
+            -e TWINE_PASSWORD \
+            ltf ./pypi.sh
